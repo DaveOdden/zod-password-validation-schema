@@ -34,7 +34,7 @@ yarn add zod-password-validation-schema
 
 Once installed via npm or yarn, import dependency into your component
 
-```bash
+```js
 import { customZodSchema } from "zod-password-validation-schema"
 ```
 
@@ -48,14 +48,14 @@ yarn add react-hook-form @hookform/resolvers/zod
 
 Import these dependencies in the same component you imported the schema
 
-```bash
+```js
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 ```
 
 Supply the schema to react-hook-form's useForm hook, including default values
 
-```bash
+```js
 const { control, handleSubmit } = useForm({
   defaultValues: {
     password: "",
@@ -67,7 +67,7 @@ const { control, handleSubmit } = useForm({
 
 React-hook-form requires a `control={control}` prop to be added to your form fields
 
-```bash
+```js
 <PasswordInput
   name="confirmPassword"
   label="Confirm password"
@@ -85,30 +85,31 @@ yarn add @mantine/form mantine-form-zod-resolver
 
 Import these dependencies in the same component you imported the schema
 
-```bash
+```js
 import { useForm } from "@mantine/form"
 import { zodResolver } from "mantine-form-zod-resolver"
 ```
 
 Supply the schema to Mantine's useForm hook, including initial values
 
-```bash
-const form = useForm<z.infer<typeof customZodSchema>>({
-  initialValues: {
-    password: "",
-    confirmPassword: "",
-  },
-  validate: zodResolver(customZodSchema),
-})
+```js
+const form =
+  useForm <
+  z.infer <
+  typeof customZodSchema >>
+    {
+      initialValues: {
+        password: "",
+        confirmPassword: "",
+      },
+      validate: zodResolver(customZodSchema),
+    }
 ```
 
 Mantine form requires a the field's input props to be spread on the input
 
-```bash
-<PasswordInput
-  label="Password"
-  {...form.getInputProps("password")}
-/>
+```js
+<PasswordInput label="Password" {...form.getInputProps("password")} />
 ```
 
 ### Formik
@@ -121,14 +122,14 @@ yarn add formik zod-formik-adapter
 
 Import these dependencies in the same component you imported the schema
 
-```bash
+```js
 import { Formik, Form } from "formik"
 import { toFormikValidate } from "zod-formik-adapter"
 ```
 
 Supply the schema to Formik's validate prop. including initial values prop as well.
 
-```bash
+```js
 <Formik
   initialValues={{
     password: "",
@@ -153,7 +154,7 @@ Supply the schema to Formik's validate prop. including initial values prop as we
 
 Formik passes down data to form elements
 
-```bash
+```js
 <PasswordInput
   label="Password"
   onChange={handleChange("password")}
@@ -173,13 +174,13 @@ yarn add react-final-form
 
 Import these dependencies in the same component you imported the schema
 
-```bash
+```js
 import { Form, Field } from "react-final-form"
 ```
 
 Create a generic handler
 
-```bash
+```js
 const formValidator = <T extends z.ZodType<any, any>>(schema: T) =>
   (values: any) => {
     try {
@@ -193,7 +194,7 @@ const formValidator = <T extends z.ZodType<any, any>>(schema: T) =>
 
 Supply the schema to our generic handler within the validate prop. including initial values prop as well.
 
-```bash
+```js
 <Form
   onSubmit={submitForm}
   validate={formValidator(customZodSchema)}
@@ -205,7 +206,7 @@ Supply the schema to our generic handler within the validate prop. including ini
 
 Within the render prop of React Final Form's `<Form>` element, add your inputs inside their `<Field>` component.
 
-```bash
+```js
 <Field name="password">
   {({ input, meta }) => (
     <PasswordInput
