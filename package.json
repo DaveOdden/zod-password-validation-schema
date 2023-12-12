@@ -1,0 +1,18 @@
+{
+  "name": "zod-password-validation-schema",
+  "author": "Dave Odden",
+  "version": "0.0.1",
+  "main": "src/index.ts",
+  "repository": "https://github.com/DaveOdden/zod-password-validation-schema.git",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "zod": "^3.22.4"
+  },
+  "peerDependencies": {
+    "zod": "^3.22.4"
+  }
+}
